@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #resolução{
+            width: 50%;
+            height:50%;
+        }
+        #corpo{
+            position: relative;
+            left:30px;
+            top:30px;
+            width:30%;
+            height: 70%;
+            border-style:inset;
+            border-radius: 25px;
+            border-color:red;
+            background-color: red;
+            
+            
+            
+        }
+        input{
+            
+            margin: 5px;
+            border-radius: 5px;
+            margin-left:15px;
+            padding-right: 25px;
+            
+           
+        }
+        #btn{
+            padding:15px;
+            border-style: none;
+            background-color:red;
+            color:white;
+            font-weight: bold;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 15px;
+            margin-left:15px;
+            margin-bottom:10px;
+        }
+        #btn:hover{
+            background-color: black;
+            transition: 0.4s;
+        }
+        h1{
+            background-color:red;
+            color: white;
+            padding-left:10px;
+            
+        }
+        #campos{
+            background-color: white;
+            border-radius: 25px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            padding: 5px;
+            padding-top: 15px;
+        }
+        #roots{
+            margin-left:15px;
+            margin-bottom: 15px;
+        }
+        #resolução{
+            border-style:inset;
+            border-color: red;
+            position: relative;
+            margin-left: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            width: 80%;
+            height: 100%;
+            padding: 15px;
+        
+        }
+       
+    </style>
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="corpo">
+        <h1>Resolutor de equações quadráticas</h1>
+        <div id="campos">
+        <input type="number" id="a">
+        <br>
+        <input type="number" id="b">
+        <br>
+        <input type="number" id="c">
+        <br>
+        
+    
+    <input type="button" id="btn" onclick="equationResult()" value="Raízes">
+    <div id="roots"></div>
+    <div id="resolução"></div>
+    </div>
+    </div>
+    
+    <script type="text/javascript">
+
+        function equationResult(){
+            var A = +document.getElementById("a").value;
+            var B = +document.getElementById("b").value;
+            var C = +document.getElementById("c").value;
+        
+            var deltA = (Math.pow(B,2)) - 4*A*C;
+
+            if (deltA < 0){
+                document.getElementById("roots").innerText = "Resposta: Conjunto Solução: Ø.";
+                document.getElementById("resolução").innerText = `Resolução: delta é = ${Math.pow(B,2)}-4*${A}*${C}. 
+                nesse caso, delta é: ${deltA}. se delta é menor que zero, então não existe raízes reais! `
+                return;
+            }
+            else{
+                var x1 = ((-B) + (Math.pow(deltA, 0.5)))/(2*A);
+                var x2 = ((-B) - (Math.pow(deltA, 0.5)))/(2*A);
+        
+                 var solution = `Resposta: As raízes reais são: ${x1} e ${x2}`;
+                 var resolution =  `Resolução: Delta é igual a b² - 4.a.c, logo delta será: ${deltA}. 
+                 As raizes serão, x1 = [-(${B}) + √ ${deltA}]/2.(${A}) e
+                 x2 = [-(${B}) - √${deltA}]/2.(${A}). logo x1= ${x1} e x2= ${x2}.
+                conjunto solução = {${x1},${x2}}.`;
+ 
+                document.getElementById("roots").innerText= solution;
+                document.getElementById("resolução").innerText= resolution;
+            }
+
+        }
+    </script>
+
+</body>
+</html>

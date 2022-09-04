@@ -1,0 +1,150 @@
+
+<!--
+    
+    Bem vindos ao meu resolutor de equações quadráticas! este projeto é fruto de semanas de estudo tanto de html e css, como principalmente de javascript. Passei horas estilizando, tentando resolver os bugs e tentando deixar a resolução a mais didática possível. Não sou profissional na area, apenas um amador que começou a estudar javascript, css e html há algumas semanas! Estou aberto a feedbacks. Você pode me mandar um email para levypinheiro2022@gmail.com ou enviar uma mensagem para meu número pessoal: 85 996144501. Espero que gostem do resultado.
+
+        Atenciosamente, Levy. 
+    
+    --->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #resolução{
+            width: 50%;
+            height:50%;
+        }
+        #corpo{
+            position: relative;
+            margin: auto;
+            left:30px;
+            top:30px;
+            width:40%;
+            height: 70%;
+            border-style:solid;
+            border-radius: 25px;
+            border-color:red;
+            background-color: red;           
+        }
+        input{       
+            margin-left:30%;
+            border-radius: 5px;
+            margin-bottom: 10px;           
+        }
+        #btn{
+            padding:15px;
+            border-style: none;
+            background-color:red;
+            color:white;
+            font-weight: bold;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 15px;
+            margin-left:39%;
+            margin-top:2% ;
+            margin-bottom:10px;
+        }
+        #btn:hover{
+            background-color: black;
+            transition: 0.4s;
+        }
+        h1{
+            background-color:red;
+            color: white;
+            padding-left:10px;
+            text-align: center;   
+        }
+        #campos{
+            background-color: white;
+            border-radius: 25px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            padding: 5px;
+            padding-top: 15px;             
+        }
+        #roots{
+            margin-left:15px;
+            margin-bottom: 15px;
+        }
+        #resolução{
+            border-style:solid;
+            border-color: black;
+            border-radius: 5px;
+            position: relative;
+            margin-left: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            width: 80%;
+            height: 100%;
+            padding: 15px;
+        }
+        #msginicial{
+            padding: 25px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 17px;
+        } 
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    
+   <div id="corpo">
+        <h1>Resolutor de equações quadráticas</h1>
+        <div id="campos">
+            <div id="msginicial">Bem vindo(a) ao Resolutor de Equações Quadráticas! Para começar basta digitar os valores de cada coeficiente da equação quadrática. Logo após você verá as raízes e a resolução do problema. Bons Estudos!</div>
+        <input type="number" placeholder="Digite o valor de a" id="a">
+        <br>
+        <input type="number" placeholder="Digite o valor de b" id="b">
+        <br>
+        <input type="number" placeholder="Digite o valor de c" id="c">
+        <br>      
+    
+    <input type="button" id="btn" onclick="equationResult()" value="Raízes">
+    <div id="roots"></div>
+    <div id="resolução"></div>
+    </div>
+    </div>
+    
+    <script type="text/javascript">
+       
+        function equationResult(){
+           
+            var A = +document.getElementById("a").value;
+            var B = +document.getElementById("b").value;
+            var C = +document.getElementById("c").value;
+        
+            var deltA = (Math.pow(B,2)) - 4*A*C;
+
+            if (deltA < 0){
+                document.getElementById("roots").innerText = "Resposta: Conjunto Solução: Ø.";
+                document.getElementById("resolução").innerText = `Resolução: Δ = ${Math.pow(B,2)} - 4.${A}.${C}. 
+                nesse caso, Δ = ${deltA}. se delta é menor que zero, então não existe raízes reais! `
+                return;
+            }
+            else{
+                var x1 = ((-B) + (Math.pow(deltA, 0.5)))/(2*A);
+                var x2 = ((-B) - (Math.pow(deltA, 0.5)))/(2*A);
+        
+                 var solution = `Resposta: As raízes reais são: ${x1} e ${x2}`;
+                 var resolution =  `Resolução:
+                 
+                 Lembrando que Δ =  b² - 4.a.c , jogando os valores dos coeficientes na expressão, temos: Δ = ${Math.pow(B,2)} - 4.${A}.${C}. Logo Δ = ${deltA}. 
+
+                 lembrando que a formula de báskara é x = (-b +- √Δ)/2.a.
+                 Logo as raizes serão: 
+                 x1 = [-${B} + √${deltA}]/2.${A}
+                 x2 = [-${B} - √${deltA}]/2.${A}
+
+                 Logo x1= ${x1} e x2= ${x2}.
+                conjunto solução = {${x1},${x2}}.`;
+ 
+                document.getElementById("roots").innerText= solution;
+                document.getElementById("resolução").innerText= resolution;
+            }   
+        }
+    </script>
+</body>
+</html>
